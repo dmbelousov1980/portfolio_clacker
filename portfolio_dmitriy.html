@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чарльз Генри Морли - Клакер высшей категории</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0a192f;
+            --secondary-dark: #112240;
+            --accent-steam: #64ffda;
+            --accent-brass: #FDB813;
+            --text-primary: #ccd6f6;
+            --text-secondary: #8892b0;
+            --gradient-text: linear-gradient(135deg, #64ffda 0%, #FDB813 100%);
+            --card-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: var(--gradient-text);
+            border-radius: 2px;
+        }
+
+        .title-gradient {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: var(--accent-steam);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .alias {
+            font-style: italic;
+            color: var(--accent-brass);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid var(--accent-brass);
+            display: inline-block;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            background-color: var(--secondary-dark);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-steam);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--accent-steam);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-brass);
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+        }
+
+        .accent-text {
+            color: var(--accent-steam);
+            font-weight: 600;
+        }
+
+        /* Skills Cards */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background-color: var(--secondary-dark);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(100, 255, 218, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-text);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-steam);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-number {
+            font-size: 1.5rem;
+            color: var(--accent-brass);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .competence {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .case-study {
+            background-color: rgba(10, 25, 47, 0.7);
+            border-left: 3px solid var(--accent-brass);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .case-title {
+            color: var(--accent-brass);
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .case-title i {
+            font-size: 1rem;
+        }
+
+        .case-result {
+            color: var(--accent-steam);
+            font-weight: 600;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Tags */
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .tool-tag {
+            background-color: var(--secondary-dark);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(253, 184, 19, 0.3);
+            color: var(--accent-brass);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tool-tag:hover {
+            background-color: rgba(253, 184, 19, 0.1);
+            transform: translateY(-3px);
+            border-color: var(--accent-brass);
+        }
+
+        /* Recommendations */
+        .recommendations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .recommendation-card {
+            background-color: var(--secondary-dark);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 5px solid var(--accent-steam);
+            font-style: italic;
+            position: relative;
+        }
+
+        .recommendation-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 4rem;
+            color: rgba(100, 255, 218, 0.2);
+            font-family: Georgia, serif;
+        }
+
+        .recommendation-author {
+            text-align: right;
+            margin-top: 15px;
+            color: var(--accent-brass);
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* Conclusion */
+        .conclusion {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--secondary-dark);
+            border-radius: 10px;
+            margin-top: 40px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .conclusion-title {
+            font-size: 2rem;
+            color: var(--accent-steam);
+            margin-bottom: 30px;
+        }
+
+        .conclusion-text {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .conclusion-accent {
+            color: var(--accent-brass);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title-gradient {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .conclusion-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title-gradient {
+                font-size: 2rem;
+            }
+            
+            .header {
+                padding: 50px 0 30px;
+            }
+            
+            .section {
+                padding: 40px 0;
+            }
+            
+            .skill-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title-gradient">ПОРТФОЛИО КЛАКЕРА ВЫСШЕЙ КАТЕГОРИИ</h1>
+            <h2 class="subtitle">Чарльз Генри Морли</h2>
+            <div class="alias">(известен в Гильдии как «Эдди», исключительно в ситуациях, когда машина уже дымится)</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i> Лондон, Саутуарк — картодром «Механикон», Лестер-сквер
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-id-card"></i> Регистрационный номер Гильдии аналитиков: 4-17-B/1849
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-certificate"></i> Патент Гильдии вычислителей: №734/В-1854
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h3 class="section-title">КРАТКО О СЕБЕ</h3>
+            <p class="about-text">Я — <span class="accent-text">клакер высшей категории</span>, профессиональный аналитик и оператор механических вычислительных двигателей Бэббиджа.</p>
+            <p class="about-text">Моя работа — заставлять машины считать быстро, точно и ровно настолько честно, насколько это выдерживает заказчик, закон и совесть.</p>
+            <p class="about-text">Я не чиню машины «по ощущениям». Я знаю, почему они врут — и кому это выгодно.</p>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">ПРОФЕССИОНАЛЬНЫЕ НАВЫКИ И ПРАКТИКА</h3>
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="skill-card">
+                    <div class="skill-number">01</div>
+                    <h4 class="skill-title">Аналитические и разностные двигатели</h4>
+                    <p class="competence">Эксплуатация разностных машин II–IV серий и аналитических двигателей промышленного класса (магазины до 10 000 перфокарт). Синхронизация барабанов, фазировка валов, компенсация люфта, стабилизация подачи при высоком давлении пара.</p>
+                    <div class="case-study">
+                        <div class="case-title"><i class="fas fa-cogs"></i> Кейс: Статистический департамент Манчестера, 1851 г.</div>
+                        <p>Машина давала расхождение 0,7 % по смертности. Причина — двойной учёт ирландских мигрантов в демографических картах.</p>
+                        <div class="case-result">Результат: погрешность снижена до 0,08 %, отчёт принят Парламентом без единой правки.</div>
+                    </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-card">
+                    <div class="skill-number">02</div>
+                    <h4 class="skill-title">Перфокарты и язык Жаккара</h4>
+                    <p class="competence">Программирование на языке Жаккара (до 9-го модуса), резка карт на станках Холлерита, ручная коррекция, восстановление утраченных последовательностей по журналам вывода. Диагностика «картобоя» и двойной перфорации.</p>
+                    <div class="case-study">
+                        <div class="case-title"><i class="fas fa-paperclip"></i> Кейс: «Большой картобой», июнь 1854 г., Механикон</div>
+                        <p>347 карт вручную перепрограммированы за 22 минуты: деление на простые числа >10⁶ заменено на итеративную «лестницу Нэпира».</p>
+                        <div class="case-result">Результат: линия спасена, расчёт завершён с отставанием 4,3 %.</div>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card">
+                    <div class="skill-number">03</div>
+                    <h4 class="skill-title">Алгоритмы под ограничения механики</h4>
+                    <p class="competence">Проектирование вычислительных цепочек с учётом износа, трения и времени цикла. Замена делений аппроксимациями, работа с логарифмическими таблицами Нэпира и Бэббиджа.</p>
+                    <div class="case-study">
+                        <div class="case-title"><i class="fas fa-calculator"></i> Кейс: Ост-Индская компания</div>
+                        <p>Страховые тарифы паровых судов с учётом муссонов и износа котлов.</p>
+                        <div class="case-result">Результат: время расчёта сокращено с 19 часов до 6, двигатель перестал «стонать» на третьем цикле.</div>
+                    </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card">
+                    <div class="skill-number">04</div>
+                    <h4 class="skill-title">Криптоанализ и секретная переписка</h4>
+                    <p class="competence">Шифры подстановки, механические перестановки, модифицированный Виженер. Частотный анализ больших массивов телеграмм, обрабатываемых аналитическими машинами МВД.</p>
+                    <div class="case-study">
+                        <div class="case-title"><i class="fas fa-key"></i> Кейс: 1853 г., радикальные индустриалисты</div>
+                        <p>Переменный ключ повторялся каждые 317 символов — предел длины карты.</p>
+                        <div class="case-result">Результат: заговор раскрыт, метод включён в учебники Гильдии.</div>
+                    </div>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-card">
+                    <div class="skill-number">05</div>
+                    <h4 class="skill-title">Экономическая аналитика</h4>
+                    <p class="competence">Прогнозирование рынков угля, пара и меди с учётом логистики, забастовок и политических решений.</p>
+                    <div class="case-study">
+                        <div class="case-title"><i class="fas fa-chart-line"></i> Кейс: Прогноз дефицита угля в Уэльсе</div>
+                        <p>За 6 месяцев до начала забастовок.</p>
+                        <div class="case-result">Результат: экономия консорциума — около 120 000 фунтов.</div>
+                    </div>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="skill-card">
+                    <div class="skill-number">06</div>
+                    <h4 class="skill-title">Саботаж и «случайные» ошибки</h4>
+                    <p class="competence">Отличаю поломку от умысла. Знаю, как выглядит подменённая карта, смазанный вал и микроскопическая латунная прокладка.</p>
+                    <div class="case-study">
+                        <div class="case-title"><i class="fas fa-search"></i> Кейс: Бирмингем, саботаж зарплатного двигателя</div>
+                        <p>Накопление ошибки в третьем барабане.</p>
+                        <div class="case-result">Результат: умысел доказан, показания даны, бухгалтерия снова стала скучной.</div>
+                    </div>
+                </div>
+
+                <!-- Skill 7 -->
+                <div class="skill-card">
+                    <div class="skill-number">07</div>
+                    <h4 class="skill-title">Полевые работы</h4>
+                    <p class="competence">Обслуживание машин вне лабораторий: фабрики, доки, колонии. Работа при сырости, вибрации и нестабильном пароснабжении.</p>
+                    <div class="case-study">
+                        <div class="case-title"><i class="fas fa-tools"></i> Кейс: Калькутта, аналитический двигатель после затопления</div>
+                        <p>Часть карт уничтожена коррозией.</p>
+                        <div class="case-result">Результат: восстановление алгоритмов по журналам вывода, администрация не остановилась ни на день.</div>
+                    </div>
+                </div>
+
+                <!-- Skill 8 -->
+                <div class="skill-card">
+                    <div class="skill-number">08</div>
+                    <h4 class="skill-title">Этические ограничения</h4>
+                    <p class="competence">Понимаю, что вычисления — это форма власти.</p>
+                    <div class="case-study">
+                        <div class="case-title"><i class="fas fa-balance-scale"></i> Кейс: 1854 г., Лидс</div>
+                        <p>Отказ занижать смертность в рабочих районах.</p>
+                        <div class="case-result">Результат: скандал, реформа санитарного надзора, временная приостановка лицензии, последующее восстановление.</div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 50px; color: var(--accent-steam);">Инструменты и технологии</h4>
+            <div class="tools-grid">
+                <div class="tool-tag"><i class="fas fa-cog"></i> Разностные машины II-IV серий</div>
+                <div class="tool-tag"><i class="fas fa-brain"></i> Аналитические двигатели</div>
+                <div class="tool-tag"><i class="fas fa-punch-card"></i> Язык Жаккара (9 модус)</div>
+                <div class="tool-tag"><i class="fas fa-industry"></i> Станки Холлерита</div>
+                <div class="tool-tag"><i class="fas fa-table"></i> Таблицы Нэпира</div>
+                <div class="tool-tag"><i class="fas fa-keyboard"></i> Частотный анализ</div>
+                <div class="tool-tag"><i class="fas fa-chart-bar"></i> Прогнозные модели</div>
+                <div class="tool-tag"><i class="fas fa-exclamation-triangle"></i> Диагностика саботажа</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">РЕКОМЕНДАЦИИ</h3>
+            <div class="recommendations">
+                <div class="recommendation-card">
+                    «Он единственный клакер, который сначала думает, а уже потом лезет в паровое сердце».
+                    <div class="recommendation-author">— Чарльз Бэббидж-младший</div>
+                </div>
+                <div class="recommendation-card">
+                    «Морли спас мне жизнь. И мои карты. В таком порядке».
+                    <div class="recommendation-author">— леди Сибил Джерард, клуб «Альбемарль»</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="conclusion">
+            <h3 class="conclusion-title">ЗАКЛЮЧЕНИЕ</h3>
+            <p class="conclusion-text">
+                Я — не просто оператор машины.<br>
+                Я — <span class="conclusion-accent">переводчик между латунью и властью</span>.<br><br>
+                Если вам нужны числа,<br>
+                которые сходятся,<br>
+                выдерживают проверку<br>
+                и не разваливаются при первом допросе,<br><br>
+                — мои карты готовы к подаче.
+            </p>
+        </section>
+
+        <footer class="footer">
+            <p>Портфолио Чарльза Генри Морли, клакера высшей категории</p>
+            <p>© 1855 Гильдия аналитиков и вычислителей. Все права защищены патентом №734/В-1854</p>
+        </footer>
+    </div>
+
+    <script>
+        // Анимация карточек при прокрутке
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillCards = document.querySelectorAll('.skill-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            skillCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Анимация заголовка
+            const title = document.querySelector('.title-gradient');
+            title.style.opacity = '0';
+            title.style.transform = 'translateY(-20px)';
+            
+            setTimeout(() => {
+                title.style.transition = 'opacity 1s ease, transform 1s ease';
+                title.style.opacity = '1';
+                title.style.transform = 'translateY(0)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
